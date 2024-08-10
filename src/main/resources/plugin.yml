@@ -1,0 +1,9 @@
+main: me.nurio.imperial.founddiamonds.FoundDiamonds
+name: FoundDiamonds
+version: '1.0'
+api-version: 1.21
+description: Notifications when someone finds minerals
+load: POSTWORLD
+author: Nurio
+website: nurio.me
+prefix: FoundDiamonds
