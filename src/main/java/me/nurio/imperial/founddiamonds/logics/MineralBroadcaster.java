@@ -11,12 +11,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import javax.inject.Named;
+
 public class MineralBroadcaster {
 
     private static final TextColor playerNameColor = TextColor.color(0, 170, 170);
     private static final TextColor messageColor = TextColor.color(255, 255, 255);
 
     public static void broadcast(Player player, Block block) {
+        Component ratio = Component.text(String.format("[%.2f]", XRayRatioCalculator.calculateXRayRatio(player))).color(NamedTextColor.RED);
+
         Component playerName = Component.text(player.getName()).color(playerNameColor);
         Component foundText = Component.text(" found ").color(messageColor);
 
@@ -31,7 +35,7 @@ public class MineralBroadcaster {
         Component finalDot = Component.text(".").color(messageColor);
 
         Bukkit.broadcast(
-            playerName.append(foundText).append(mineralName).appendSpace().append(amountMessage).append(finalDot)
+                ratio.appendSpace().append(playerName).append(foundText).append(mineralName).appendSpace().append(amountMessage).append(finalDot)
         );
     }
 
